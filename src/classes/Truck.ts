@@ -5,7 +5,6 @@ import Car from './Car.js';
 import Wheel from './Wheel.js';
 import AbleToTow from '../interfaces/AbleToTow.js';
 
-// TODO: The Truck class should extend the Vehicle class and should implement the AbleToTow interface
 class Truck extends Vehicle implements AbleToTow {
     vin: string;
     color: string;
@@ -47,8 +46,6 @@ class Truck extends Vehicle implements AbleToTow {
 
     tow(vehicle: Truck | Motorbike | Car): void {
         // Get the make an model of the vehicle if it exists
-        // TODO: Check if this is correct...not sure if it should just be if(vehicle)
-        // TODO: or like this if(vehicle instanceof Truck || vehicle instanceof Motorbike || vehicle instanceof Car) {
         const vehicleMake: string = vehicle.make || '';
         const vehicleModel: string = vehicle.model || '';
 

@@ -276,8 +276,6 @@ class Cli {
         },
       ])
       .then((answers) => {
-        // TODO: check if the selected vehicle is the truck
-        // TODO: Debug this.  not sure if it's right or needs to be vehicleToTow.value
         if(truck === answers.vehicleToTow){
           console.log('The truck cannot tow itself');
           this.performActions();
@@ -370,28 +368,28 @@ class Cli {
               this.vehicles[i].reverse();
             }
           }
-        }
-        else if(answers.action === 'Tow'){
+        } else if (answers.action === 'Tow'){
             for(let i = 0; i < this.vehicles.length; i++){
                 if(this.vehicles[i].vin === this.selectedVehicleVin){
                     if(this.vehicles[i] instanceof Truck){
-                        this.findVehicleToTow(this.vehicles[i] as Truck); //TODO: Seems odd to have to cast this as a Truck, we already know it's a Truck from the if statement, but it's erroring without it.
+                        this.findVehicleToTow(this.vehicles[i] as Truck); // Seems odd to have to cast this as a Truck, we already know it's a Truck from the if statement, but it's erroring without it.
                         return;
+                    }else{
+                        console.log('Only trucks can tow');
                     }
                 }
             }
-        }
-        else if(answers.action === 'Wheelie'){
+        } else if (answers.action === 'Wheelie'){
             for(let i = 0; i < this.vehicles.length; i++){
                 if(this.vehicles[i].vin === this.selectedVehicleVin){
                     if(this.vehicles[i] instanceof Motorbike){
-                        (this.vehicles[i] as Motorbike).wheelie(); //TODO: Seems odd to have to cast this as a Motorbike, we already know it's a Motorbike from the if statement, but it's erroring without it.
-                        return;
+                        (this.vehicles[i] as Motorbike).wheelie(); // Seems odd to have to cast this as a Motorbike, we already know it's a Motorbike from the if statement, but it's erroring without it.
+                    }else{
+                        console.log('Only motorbikes can do a wheelie');
                     }
                 }
             }
-        }
-        else if (answers.action === 'Select or create another vehicle') {
+        } else if (answers.action === 'Select or create another vehicle') {
           // start the cli to return to the initial prompt if the user wants to select or create another vehicle
           this.startCli();
           return;
