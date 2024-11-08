@@ -39,7 +39,13 @@ class Motorbike extends Vehicle {
     }
 
     wheelie(): void {
-        console.log(`Motorbike ${this.make} ${this.model} is doing a wheelie!`);
+        if(!this.started){
+            console.log('Start the motorbike first');
+        }else if(this.currentSpeed === 0){
+            console.log('Build up some speed before trying to do a wheelie.')
+        }else{
+            console.log(`Motorbike ${this.make} ${this.model} is doing a wheelie!`);
+        }
     }
 
     override printDetails(): void {
